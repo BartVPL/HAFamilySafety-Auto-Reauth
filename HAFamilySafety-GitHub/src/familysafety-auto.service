@@ -1,0 +1,17 @@
+[Unit]
+Description=Microsoft Family Safety unattended reauth
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+EnvironmentFile=/etc/familysafety-bot.env
+EnvironmentFile=/etc/familysafety-auto.env
+ExecStart=/opt/familysafety-bot/venv/bin/python -u /opt/familysafety-bot/familysafety-auto.py
+TimeoutStartSec=20min
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+# Started by familysafety-auto.timer, not enabled independently.

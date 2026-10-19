@@ -1,0 +1,11 @@
+[Unit]
+Description=Check FamilySafety reauth every minute
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=1min
+AccuracySec=10s
+Unit=familysafety-auto.service
+
+[Install]
+WantedBy=timers.target
